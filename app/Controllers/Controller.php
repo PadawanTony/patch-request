@@ -1,6 +1,8 @@
 <?php
 namespace App\Controllers;
 
+use App\Http\Form;
+use App\Socialike\Element\HtmlGenerator;
 use Core\App;
 use Core\flash\Flash;
 use Twig_Environment;
