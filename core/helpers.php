@@ -27,7 +27,7 @@ function env ($name, $default = null)
  */
 function environment ($string) : bool
 {
-    return env('APP_ENV') == $string;
+    return App::get('config.app')['env'] == $string;
 }
 
 /**
