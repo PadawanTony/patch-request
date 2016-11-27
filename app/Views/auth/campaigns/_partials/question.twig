@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-md-9 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Create question
+                    <small><a href="/campaigns/{{ campaign.id }}/edit">{{ campaign.title }}</a></small>
+                </h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <br/>
+
+                <div class="form-horizontal form-label-left">
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="text">Text</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            {{ form.text('query', null, {'id': 'text', 'class': 'form-control'})|raw }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="text">Index</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            {{ form.number('priority', null, {'id': 'text', 'class': 'form-control', 'min': '0'})|raw }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="type_id">Type</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            {{ form.select('element_id', elements, null, {'class': 'form-control'})|raw }}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="tags_1">Multiple answers</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            {{ form.text('question_values_text', values, {'class': 'tags form-control'})|raw }}
+                            <div id="suggestions-container"
+                                 style="position: relative; float: left; width: 250px; margin: 10px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,68 @@
+{% extends 'auth/layouts/master.twig' %}
+
+{% block title %}Edit Campaign | ID: {{ campaign.id }}{% endblock %}
+
+{% block styling %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/skins/flat/_all.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/2.1.24/daterangepicker.min.css"
+          rel="stylesheet">
+{% endblock styling %}
+
+{% block body_class %}nav-md{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2><i class="fa fa-bars"></i>
+                        <small></small>
+                    </h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+
+                    {{ form.model(campaign, {
+                        'action' : '/campaigns/' ~ campaign.id ~ '/update',
+                    })|raw }}
+
+                    {{ form.hidden('id', campaign.id)|raw }}
+
+                    {{ include('auth/campaigns/_partials/wizard/step_2.twig') }}
+
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-sm-push-3">
+                            {{ form.submit('Update', {'class': 'btn btn-success'})|raw }}
+                            <a href="/campaigns/{{ campaign.id }}/questions" class="btn btn-default">Questions</a>
+                        </div>
+                    </div>
+
+                    {{ form.close()|raw }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+    {% block scripting %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.16.0/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/2.1.24/daterangepicker.min.js"></script>
+        <script>
+            $(document).ready(function () {
+
+                $('.date-picker').daterangepicker({
+                    timePicker: true,
+                    timePicker24Hour: true,
+                    singleDatePicker: true,
+                    timePickerIncrement: 15,
+                    locale: {
+                        format: 'YYYY-MM-DD HH:mm:ss'
+                    }
+                });
+            });
+        </script>
+    {% endblock scripting %}

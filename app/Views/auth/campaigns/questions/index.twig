@@ -1,0 +1,55 @@
+{% extends 'auth/layouts/master.twig' %}
+
+{% block title %}Questions | Campaign ID: {{ campaign.id }}{% endblock %}
+
+{% block styling %}
+{% endblock styling %}
+
+{% block body_class %}nav-md{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>List </h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Text</th>
+                        <th>Type</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for question in campaign.questions %}
+                        <tr>
+                            <th scope="row">{{ question.id }}</th>
+                            <td>{{ question.query }}</td>
+                            <td>{{ question.element.type }}</td>
+                            <td>
+                                <a href="/campaigns/{{ campaign.id }}/questions/{{ question.id }}/edit"
+                                   class="btn btn-default">Edit</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+
+                {{ campaigns.paginationLinks|raw }}
+
+
+                <a href="/campaigns/{{ campaign.id }}/questions/create" class="btn btn-primary pull-right">Add</a>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block scripting %}
+{% endblock scripting %}

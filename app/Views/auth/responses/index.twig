@@ -1,0 +1,64 @@
+{% extends 'auth/layouts/master.twig' %}
+
+{% block title %}Responses{% endblock %}
+
+{% block styling %}
+{% endblock styling %}
+
+{% block body_class %}nav-md{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>List </h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>App</th>
+                        <th>Campaign</th>
+                        <th>Responder</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for response in responses %}
+                        <tr>
+                            <td>
+                                <a href="/apps/{{ response.responder.app.id }}/edit" class="btn btn-default">
+                                    {{ response.responder.app.name }}</a>
+                            </td>
+
+                            <td>
+                                <a href="/campaigns/{{ response.question.campaign.id }}/edit" class="btn btn-default">
+                                    {{ response.question.campaign.title }}</a>
+                            </td>
+
+                            <td>
+                                <a href="/responders/{{ response.responder.id }}/show" class="btn btn-default">
+                                    {{ response.responder.email }}</a>
+                            </td>
+
+                            <td>
+                                <a href="/responses/{{ response.id }}/show" class="btn btn-default"> Show</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+
+                {{ campaigns.paginationLinks|raw }}
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block scripting %}
+{% endblock scripting %}

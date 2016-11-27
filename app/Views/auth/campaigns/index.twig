@@ -1,0 +1,48 @@
+{% extends 'auth/layouts/master.twig' %}
+
+{% block title %}Campaigns{% endblock %}
+
+{% block styling %}
+{% endblock styling %}
+
+{% block body_class %}nav-md{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>List </h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Title</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for campaign in campaigns %}
+                        <tr>
+                            <th scope="row">{{ campaign.id }}</th>
+                            <td>{{ campaign.title }}</td>
+                            <td><a href="/campaigns/{{ campaign.id }}/edit">Edit</a></td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+
+                {{  campaigns.paginationLinks|raw }}
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block scripting %}
+{% endblock scripting %}

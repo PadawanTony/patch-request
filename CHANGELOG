@@ -1,0 +1,5 @@
+# CHANGELOG
+## v0.1.0
+ - 1 Set up changelog, and license.
+ - Removed .htaccess for performance reasons
+ - Removed get_magic_quotes_gpc from /app/setup.php

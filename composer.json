@@ -1,0 +1,31 @@
+{
+  "name": "antony-kalogeropoulos/blog",
+  "description": "Antony Kalogeropoulos | Blog",
+  "license": "UNLICENSED",
+  "authors": [
+    {
+      "name": "Antony Kalogeropoulos",
+      "email": "anthonykalogeropoulos@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^7.0.0",
+    "twig/twig": "~1.0",
+    "vlucas/phpdotenv": "^2.3",
+    "nesbot/carbon": "^1.21"
+  },
+  "require-dev": {
+    "raveren/kint": "^1.0",
+    "fzaninotto/faker": "^1.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/",
+      "Core\\": "core/"
+    },
+    "files": [
+      "core/helpers.php",
+      "core/constants.php"
+    ]
+  }
+}

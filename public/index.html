@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Antony Kalogeropoulos | Blog</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc=" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+    <nav class="w3-sidenav w3-light-grey" style="display: none" id="mySidenav">
+        <div class="w3-container w3-dark-grey">
+            <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-closenav w3-large">Close &times;</a>
+            <h4>Menu</h4>
+        </div>
+
+        <img src="img/img_avatar3.png" style="width:100%">
+
+        <a class="w3-red w3-padding" href="#">Home</a>
+        <a class="w3-padding" href="#">Projects <span class="w3-tag w3-red w3-round w3-right">8</span></a>
+        <a class="w3-padding" href="#">About</a>
+        <a class="w3-padding" href="#">Contact</a>
+
+        <div class="w3-container w3-section">
+            <div class="w3-border w3-round w3-padding w3-blue-grey">
+                <span onclick="this.parentElement.style.display='none'" class="w3-closebtn">&times;</span>
+                <p>Lorem ipsum box...</p>
+            </div>
+        </div>
+    </nav>
+
+
+    <div id="main">
+
+        <header class="w3-container w3-teal" style="text-align: center">
+            <span class=" w3-left w3-opennav w3-xlarge" onclick="w3_open()" id="openNav">&#9776;</span>
+            <h1 style="display: inline;"> My Header </h1>
+        </header>
+
+        <img src="img/img_mountains.jpg">
+
+        <div class="w3-container">
+          <p>In this example, the sidenav is hidden (style="display:none") and is only shown when you click on the menu icon in the top left corner. When it is opened, it shifts the page content to the right (we use JavaScript to add a 25% left margin to the div element with id="main" when this happens. The value "25%" matches the value used to set the width of the sidenav. Tip: If you change the left margin to 40%, you should change the width of the sidenav to 40% as well.</p>
+        </div>
+
+        <footer class="w3-container w3-teal">
+          <h5>Footer</h5>
+          <p>Footer information goes here</p>
+        </footer>
+
+    </div>
+
+
+
+    <script>
+        function w3_open() {
+          document.getElementById("main").style.marginLeft = "25%";
+          document.getElementById("mySidenav").style.width = "25%";
+          document.getElementById("mySidenav").style.display = "block";
+          document.getElementById("openNav").style.display = 'none';
+        }
+        function w3_close() {
+          document.getElementById("main").style.marginLeft = "0%";
+          document.getElementById("mySidenav").style.display = "none";
+          document.getElementById("openNav").style.display = "inline-block";
+        }
+    </script>
+
+    <script>
+        $( document ).ready(function() {
+            w3_open();
+        });
+
+    </script>
+
+</body>
+</html>

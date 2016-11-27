@@ -1,0 +1,17 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea/
+.env
+vendor/
+storage/framework/cache/*
+!storage/framework/cache/.gitkeep
+#public/assets/
+node_modules/
+.DS_Store
+public/build/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+*.swp

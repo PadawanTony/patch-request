@@ -1,0 +1,80 @@
+<div id="step-2">
+
+    <div class="form-horizontal form-label-left">
+
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="title">Title
+                <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {{ form.text('title', null, {
+                    'id': 'title', 'class': 'form-control col-md-7 col-xs-12',
+                    'required': 'required'
+                })|raw }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="description">Description</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {{ form.text('description', null, {'id': 'description', 'class': 'form-control col-md-7 col-xs-12' })|raw }}
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ngo_id">Ngo</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {{ form.select('ngo_id', ngos, null, {'id': 'ngo_id', 'class': 'form-control'})|raw }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="start_date">Start Date
+                <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {{ form.text('start_date', null, {
+                    'required': 'required',
+                    'id': 'start_date',
+                    'class': 'date-picker form-control col-md-7 col-xs-12'
+                })|raw }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="end_date">End Date <span
+                        class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {{ form.text('end_date', null, {
+                    'required': 'required',
+                    'class': 'date-picker form-control col-md-7 col-xs-12'
+                })|raw }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="budget_cents">Budget <span
+                        class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {{ form.number('budget_cents', null, {
+                    'required': 'required',
+                    'class': 'form-control col-md-7 col-xs-12'
+                })|raw }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="payment_cents">Payment <span
+                        class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {{ form.number('payment_cents', null, {
+                    'required': 'required',
+                    'class': 'form-control col-md-7 col-xs-12'
+                })|raw }}
+            </div>
+        </div>
+
+    </div>
+</div>
+

@@ -1,0 +1,37 @@
+#!/bin/bash
+
+workingDirectory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+currentDirectory=$PWD
+
+dbVersion="design.sql"
+
+declare -A config=( [db.username]="homestead" [db.password]="secret" [db.name]="socialike") 
+
+echo "> Dropping database: ${config[db.name]}"
+mysql -u${config[db.username]} -p${config[db.password]} -e "drop database if exists ${config[db.name]}"
+printf "> Done\n\n"
+
+echo "> Creating database."
+mysql -u${config[db.username]} -p${config[db.password]} -e "create database ${config[db.name]}"
+printf "> Done\n\n"
+
+echo "> Importing database architecture."
+cd $workingDirectory
+mysql -u${config[db.username]} -p${config[db.password]} ${config[db.name]} < $dbVersion
+cd $currentDirectory
+
+echo "> Inserting required initial database values."
+cd $workingDirectory
+php setup_database.php
+cd $currentDirectory
+printf "> Done\n\n"
+
+for parameter in "$@"
+do
+    if [ $parameter == "--fake-it" ]; then
+        cd $workingDirectory
+        php generate_fake_data.php
+        cd $currentDirectory
+    fi
+done

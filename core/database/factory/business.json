@@ -1,0 +1,71 @@
+[
+  {
+    "title": "Nike Campaign",
+    "ngo": "Nike",
+    "description": "Whenever someone buys a pair of shoes from one of our stores, we give one pair of shoes to poor people. This is how we contribute to the general good of the society. Please, answer the following questions and, for every question, we will give {money} euros to {ngo}.",
+    "img_theme": "http://mentalfloss.com/sites/default/legacy/blogs/wp-content/uploads/2011/11/NG_NewOrleans_Collection_300-565x376.png",
+    "questions": [
+      {
+        "query": "Did you know about this action of Nike?",
+        "type": "radio",
+        "values": [
+          "Yes",
+          "No"
+        ],
+        "priority": 2
+      },
+      {
+        "query": "Would you like us to continue doing this or should we change to another action?",
+        "type": "radio",
+        "values": [
+          "Continue",
+          "Change"
+        ],
+        "priority": 1
+      },
+      {
+        "query": "Do you have any ideas of other actions we could take?",
+        "type": "textarea",
+        "priority": 3
+      }
+    ]
+  },
+  {
+    "title": "Nestle Campaign",
+    "ngo": "Nestle",
+    "description": "Nestle offers free receipes to everyone in our website: www.nestle.com. Please watch the following video and answer the questions and we will give {money} to {ngo}.",
+    "img_theme": "http://www.nestle.com/asset-library/PublishingImages/CSV/Environmental-sustainability/es-landing-products.png",
+    "youtube_url": "https://www.youtube.com/watch?v=m4xCHVlttWo",
+    "questions": [
+      {
+        "query": "Have you ever used our site to find out receipes?",
+        "type": "radio",
+        "values": [
+          "Yes",
+          "No"
+        ]
+      },
+      {
+        "query": "Which Nestle products do you use the most?",
+        "type": "checkbox",
+        "values": [
+          "Product1",
+          "Product2",
+          "Product3"
+        ]
+      },
+      {
+        "query": "How happy are you with Nestle products overall? ",
+        "type": "radio",
+        "values": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      }
+    ]
+  }
+]
+

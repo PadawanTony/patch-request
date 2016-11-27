@@ -1,0 +1,44 @@
+{% extends 'guest/campaigns/layouts/master.twig' %}
+
+{% block title %} {{ Default }} {% endblock title %}
+
+{% block styling %}
+{% endblock styling %}
+
+{% block content %}
+
+    <div class="row">
+        <img class="center-block responsive-img materialboxed" width="650"
+             src="/img/background3.jpg">
+    </div>
+
+    <div class="row">
+        <form class="col s12">
+            <h2 class="col s12 header">{{ campaign.title }}</h2>
+            <p class="caption col s12"> {{ campaign.description }}</p>
+        </form>
+    </div>
+
+    <div class="row">
+        <form class="col s12">
+
+            {% for question in campaign.questions %}
+                <div class="row">
+                    <div class="input-field col s12">
+                        {{ element.generate(question)|raw }}
+                    </div>
+                </div>
+            {% endfor %}
+        </form>
+    </div>
+
+{% endblock content %}
+
+{% block scripting %}
+    <script>
+        $(document).ready(function () {
+            $('select').material_select();
+        });
+    </script>
+{% endblock scripting %}
+
