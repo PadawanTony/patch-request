@@ -7,13 +7,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc=" crossorigin="anonymous"></script>
 
 </head>
 <body>
 
-    <nav class="w3-sidenav w3-light-grey" style="display: none" id="mySidenav">
+    <nav class="w3-sidenav w3-animate-left w3-card-8 w3-light-grey" style="display: none;z-index:5" id="mySidenav">
         <div class="w3-container w3-dark-grey">
             <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-closenav w3-large">Close &times;</a>
             <h4>Menu</h4>
@@ -21,19 +22,21 @@
 
         <img src="img/img_avatar3.png" style="width:100%">
 
-        <a class="w3-red w3-padding" href="#">Home</a>
-        <a class="w3-padding" href="#">Projects <span class="w3-tag w3-red w3-round w3-right">8</span></a>
-        <a class="w3-padding" href="#">About</a>
-        <a class="w3-padding" href="#">Contact</a>
+        <a class="w3-padding w3-hover-black w3-border-bottom" href="#"><i class="fa fa-home w3-large"></i> Home</a>
+        <a class="w3-padding w3-hover-green w3-border-bottom" href="#"><i class="fa fa-home w3-large"></i> Projects <span class="w3-tag w3-red w3-round w3-right">8</span></a>
+        <a class="w3-padding w3-hover-red w3-border-bottom" href="#"><i class="fa fa-home w3-large"></i> About</a>
+        <a class="w3-padding w3-hover-blue w3-border-bottom" href="#"><i class="fa fa-home w3-large"></i> Contact</a>
 
         <div class="w3-container w3-section">
             <div class="w3-border w3-round w3-padding w3-blue-grey">
                 <span onclick="this.parentElement.style.display='none'" class="w3-closebtn">&times;</span>
-                <p>Lorem ipsum box...</p>
+                <p>Welcome to my blog!</p>
             </div>
         </div>
     </nav>
 
+
+    <div class="w3-overlay w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
 
     <div id="main">
 
@@ -56,6 +59,11 @@
     </div>
 
 
+    <script>
+        $( document ).ready(function() {
+            w3_open();
+        });
+    </script>
 
     <script>
         function w3_open() {
@@ -63,19 +71,14 @@
           document.getElementById("mySidenav").style.width = "25%";
           document.getElementById("mySidenav").style.display = "block";
           document.getElementById("openNav").style.display = 'none';
+          document.getElementById("myOverlay").style.display = "block";
         }
         function w3_close() {
           document.getElementById("main").style.marginLeft = "0%";
           document.getElementById("mySidenav").style.display = "none";
           document.getElementById("openNav").style.display = "inline-block";
+          document.getElementById("myOverlay").style.display = "none";
         }
-    </script>
-
-    <script>
-        $( document ).ready(function() {
-            w3_open();
-        });
-
     </script>
 
 </body>
