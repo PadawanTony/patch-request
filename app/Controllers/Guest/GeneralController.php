@@ -13,4 +13,9 @@ class GeneralController extends GuestController
     {
         return $this->view('article');
     }
+
+    public function about ()
+    {
+        return $this->view('about');
+    }
 }
