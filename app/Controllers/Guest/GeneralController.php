@@ -1,12 +1,11 @@
 <?php
 namespace App\Controllers\Guest;
 
-use App\Controllers\Controller;
 
-class GeneralController extends Controller
+class GeneralController extends GuestController
 {
     public function index ()
     {
-        return $this->view('guest.index');
+        return $this->view('index');
     }
 }

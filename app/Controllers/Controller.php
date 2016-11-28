@@ -18,12 +18,12 @@ abstract class Controller
 
     /**
      * AdminController constructor.
+     *
+     * @param Twig_Loader_Filesystem $Twig_Loader
      */
-    public function __construct ()
+    public function __construct (Twig_Loader_Filesystem $Twig_Loader)
     {
-        $loader = new Twig_Loader_Filesystem(__DIR__ . '/../Views/');
-
-        $this->twig = new Twig_Environment($loader, [
+        $this->twig = new Twig_Environment($Twig_Loader, [
             'debug'       => App::get('config.app')['debug'],
             'cache'       => App::get('config.app')['storage.cache'],
             'auto_reload' => true,
