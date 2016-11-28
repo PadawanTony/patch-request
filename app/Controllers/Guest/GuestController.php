@@ -11,7 +11,7 @@ namespace App\Controllers\Guest;
 use App\Controllers\Controller;
 use Twig_Loader_Filesystem;
 
-class GuestController extends Controller
+abstract class GuestController extends Controller
 {
     public function __construct ()
     {
