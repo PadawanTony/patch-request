@@ -11,8 +11,10 @@ use Core\Router;
 |
 */
 Router::get('', 'Guest/GeneralController@blog');
+Router::get('blog', 'Guest/GeneralController@blog');
 Router::get('article', 'Guest/GeneralController@article');
 Router::get('about', 'Guest/GeneralController@about');
+Router::get('contact', 'Guest/GeneralController@contact');
 
 
 /*

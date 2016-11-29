@@ -18,4 +18,9 @@ class GeneralController extends GuestController
     {
         return $this->view('about');
     }
+
+    public function contact ()
+    {
+        return $this->view('contact');
+    }
 }
