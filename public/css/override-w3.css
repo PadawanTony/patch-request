@@ -10,3 +10,18 @@ p {
 #closeBtn:hover {
     background: none;
 }
+
+.marginForSidenav {
+    margin-left: 25%;
+}
+.widthForSidenav {
+    width: 25%;
+}
+@media screen and (max-width:  601px){
+    .marginForSidenav {
+        margin-left: 35%;
+    }
+    .widthForSidenav {
+        width: 35%;
+    }
+}
