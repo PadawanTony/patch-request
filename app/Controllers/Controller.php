@@ -25,7 +25,7 @@ abstract class Controller
     {
         $this->twig = new Twig_Environment($Twig_Loader, [
             'debug'       => App::get('config.app')['debug'],
-            'cache'       => App::get('config.app')['storage.cache'],
+//            'cache'       => App::get('config.app')['storage.cache'],
             'auto_reload' => true,
         ]);
 
