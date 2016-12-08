@@ -22,4 +22,4 @@ use Core\Session;
 //}
 
 $apache_errorlog = file_get_contents('/var/log/apache2/error.log');
-var_dump($apache_errorlog);
+echo exec('cat /var/log/apache2/error.log');
