@@ -16,6 +16,8 @@ Router::get('article', 'Guest/GeneralController@article');
 Router::get('about', 'Guest/GeneralController@about');
 Router::get('contact', 'Guest/GeneralController@contact');
 
+//Tentative Articles
+Router::get('cleardb', 'Guest/GeneralController@cleardb');
 
 /*
 |--------------------------------------------------------------------------

@@ -1,0 +1,115 @@
+{% extends 'layout/master.twig' %}
+
+{% block title %} {{ parent() }}Blog {% endblock title %}
+
+{% block head %}
+    <script src="/js/w3codecolor.js" type="application/javascript"></script>
+{% endblock %}
+
+{% block header %} Set-Up ClearDB Add-On in Heroku. {% endblock header %}
+
+
+{% block content %}
+
+    <div class="w3-container w3-card w3-margin w3-padding ">
+
+        {#Secondary Title#}
+        <div class="w3-section w3-padding w3-dark-gray w3-round-small">
+            <h3 class="w3-center w3-text-shadow"><b>This tutorial explains how to migrate your local/development MySQL DB to use the ClearDB add-on in Heroku.</b>
+                {#<small class="w3-hide-small w3-opacity-min w3-right">Dec 10, 2016</small>#}
+            </h3>
+        </div>
+
+        {#Step 1#}
+        <div class="w3-section w3-padding w3-card-2">
+            <div class="w3-panel w3-light-green w3-round">
+                <h2>Step 1- Install ClearDB Add-On in Heroku</h2>
+                <div class="w3-example w3-round">
+                    <h3>Open a terminal and navigate to your project</h3>
+                    <div class="w3-code notranslate">
+                        <b>antony:~/Code/athens-night$</b> <code class="w3-codespan">heroku addons:create cleardb:ignite</code> <br>
+                        Creating cleardb:ignite on ⬢ athens-night... free <br>
+                        Created cleardb-deep-51722 as CLEARDB_DATABASE_URL <br>
+                        Use heroku addons:docs cleardb to view documentation <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {#Step 2#}
+        <div class="w3-section w3-padding w3-card-2">
+            <div class="w3-panel w3-light-blue w3-round">
+                <h2>Step 2 - Get DB URL</h2>
+                <div class="w3-example">
+                    <h3>Open a terminal and navigate to your project</h3>
+                    <div class="w3-code notranslate">
+                        <b>antony:~/Code/athens-night$</b> <code class="w3-codespan">heroku config | grep CLEARDB_DATABASE_URL</code> <br>
+                        CLEARDB_DATABASE_URL: mysql://aabbcc:kfc222@us-cdbr-iron-east-44.cleardb.net/heroku_123pass?reconnect=true <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {#Step 3#}
+        <div class="w3-section w3-padding w3-card-2">
+            <div class="w3-panel w3-khaki w3-round">
+                <h2>Step 3 - Import exported dump of local DB</h2>
+                <div class="w3-example">
+                    <h3>Open a terminal and navigate to your project</h3>
+                    <div class="w3-code notranslate">
+                        <b>antony:~/Code/athens-night$</b> <code class="w3-codespan">mysql -u aabbcc -h us-cdbr-iron-east-44.cleardb.net -p heroku_123pass < ~/location/to/yourDump.sql</code> <br>
+                        Enter password: (enter kfc222) <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {#Step 4#}
+        <div class="w3-section w3-padding w3-card-2">
+            <div class="w3-panel w3-lime w3-round">
+                <h2>Step 4 - Update PHP to use ClearDB</h2>
+                <div class="w3-example">
+                    <h3>Inside your DB's constructor</h3>
+                    <div class="w3-code notranslate">
+                        /** <br>
+                        * DB constructor. Connect to Heroku's DB (ClearDB). <br>
+                        */ <br>
+                        public function __construct() <br>
+                        { <br>
+                        <div style="padding-left:2em">
+                            $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL")); <br>
+                            <br>
+                            <br>
+                            $this->host = $cleardb_url["host"];; <br>
+                            $this->port = 3306; <br>
+                            $this->dbname = substr($cleardb_url["path"], 1); <br>
+                            $this->username = $cleardb_url["user"]; <br>
+                            $this->password = $cleardb_url["pass"]; <br>
+                            <br>
+                            $this->options = [PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8']; <br>
+                            <br>
+                            $this->connect(); <br>
+                        </div>
+                        } <br>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-panel w3-note w3-light-blue w3-border-blue">
+                <p>
+                    And of course don't forget that you can use these values to connect to the remote DB server from any DB tool, such as MySQL Workbench.
+                </p>
+            </div>
+        </div>
+
+        <div class="w3-section w3-panel">
+            <h3 class="w3-center"> Congrats. You're done. The end.</h3>
+        </div>
+
+    </div>
+
+
+{% endblock content %}
+
+
+{% block scripts %}
+{% endblock scripts %}

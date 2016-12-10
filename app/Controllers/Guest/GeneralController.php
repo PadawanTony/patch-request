@@ -28,4 +28,10 @@ class GeneralController extends GuestController
     {
         return $this->view('contact');
     }
+
+    //Tentative Articles
+    public function cleardb ()
+    {
+        return $this->view('articles/cleardb');
+    }
 }
