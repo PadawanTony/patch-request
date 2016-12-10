@@ -18,6 +18,7 @@ Router::get('contact', 'Guest/GeneralController@contact');
 
 //Tentative Articles
 Router::get('cleardb', 'Guest/GeneralController@cleardb');
+Router::get('dom-crawler', 'Guest/GeneralController@dom_crawler');
 
 /*
 |--------------------------------------------------------------------------

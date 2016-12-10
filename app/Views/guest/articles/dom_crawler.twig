@@ -1,0 +1,147 @@
+{% extends 'layout/master.twig' %}
+
+{% block title %} {{ parent() }}PHP - HTML DOM Crawler{% endblock title %}
+
+{% block head %}
+    <script src="/js/w3codecolor.js" type="application/javascript"></script>
+{% endblock %}
+
+{% block header %} PHP - HTML DOM Crawler {% endblock header %}
+
+
+{% block content %}
+
+    <div class="w3-container w3-card w3-margin w3-padding ">
+
+        {#Secondary Title#}
+        <div class="w3-section w3-padding w3-dark-gray w3-round-small">
+            <h3 class="w3-center w3-text-shadow"><b>Parse the HTML DOM of a page (or a whole site) and selectively pull out the information that is important to you.</b>
+                {#<small class="w3-hide-small w3-opacity-min w3-right">Dec 10, 2016</small>#}
+            </h3>
+        </div>
+
+        {#The Why#}
+        <div class="w3-section w3-padding w3-card-2" style="background-color: #AED2B3">
+            <div class="w3-panel w3-round">
+                <h2>The Why</h2>
+                <p>
+                    Recently (22 Nov 2016), while I was working with the DB for <a href="https://www.athens-night.gr/map">a project</a>, I accidentally deleted around 1,000 rows from a table!
+                    <br>
+                    Fortunately, I had left the Admin Panel open on my browser and it was displaying all the rows from the DB in a neat little table.
+                    <br>
+                    Long story short, I was able to get all the rows I had deleted in an HTML file and, using an HTML crawler, I parse the HTML file and re-create the rows in the DB!
+                </p>
+                <div class="w3-panel w3-note">
+                    <p>
+                        Of course, you should always use transactions and take frequent backups when working directly with DB data.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        {#The What#}
+        <div class="w3-section w3-padding w3-card-2" style="background-color: #639F6B;">
+            <div class="w3-panel w3-round">
+                <h2>The What</h2>
+                <div class="w3-example w3-round">
+                    <h3>PHP Simple HTML DOM Parser Manual</h3>
+                    <p>
+                        Download the file you need by clicking <a href="/downloadables/simple_html_dom.php.zip">here</a> and find the relevant Documentation for the library <a href="http://simplehtmldom.sourceforge.net/manual.htm#section_create">here</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        {#Step 2#}
+        <div class="w3-section w3-padding w3-card-2" style="background-color: #456F4B;">
+            <div class="w3-panel w3-round">
+                <h2>A sample</h2>
+                <div class="w3-example">
+                    <h3>This is a sample of how I used the library to solve my problem.</h3>
+                    <div class="w3-code notranslate">
+                        &lt;?php <br>
+                        // Namespace <br>
+                        use Night\Database\DB; <br>
+                        <br>
+                        // Require the Crawler <br>
+                        require('simple_html_dom.php'); <br>
+                        <br>
+                        // Instantiate the crawler and read the HTML file <br>
+                        $html = new simple_html_dom(); <br>
+                        $html->load_file(__DIR__.'/backup.html'); <br>
+                        <br>
+                        // Create a new DB object <br>
+                        $db = new DB(); <br>
+                        <br>
+                        <br>
+                        // Crawl the HTML file with the crawler and get relative info <br>
+                        $data = []; <br>
+                        foreach ($html->find('tr') as $row) <br>
+                        { <br>
+                        <br>
+                        <div style="padding-left: 2em;">
+                            /** <br>
+                            * These were the children elements inside my table row<br>
+                            * <br>
+                            * 1 => title <br>
+                            * 2 => venue_name <br>
+                            * 3 => type <br>
+                            * 4 => start_date <br>
+                            * 5 => end_date <br>
+                            * 6 => date_created <br>
+                            * 7 => start_time <br>
+                            * 8 => end_time <br>
+                            * 9 => source_url <br>
+                            * 10=> description <br>
+                            */ <br>
+                            $data[] = $row->children(1)->plaintext; <br>
+                            $data[] = $row->children(2)->plaintext; <br>
+                            $data[] = $row->children(3)->plaintext; <br>
+                            $data[] = $row->children(4)->plaintext; <br>
+                            $data[] = $row->children(5)->plaintext; <br>
+                            $data[] = $row->children(6)->plaintext; <br>
+                            $data[] = $row->children(7)->plaintext; <br>
+                            $data[] = $row->children(8)->plaintext; <br>
+                            $data[] = $row->children(9)->plaintext; <br>
+                            $data[] = $row->children(10)->plaintext; <br>
+                        <br>
+                            // Insert the info in the DB <br>
+                            $result = $db->addBackupEvent($data); <br>
+                            <br>
+                            // Show success or error message <br>
+                            if ($result['success'] == true) <br>
+                            { <br>
+                                &emsp;echo "&lt;div style='color: green'>" . $result['message'] . "&lt;div>"; <br>
+                            } <br>
+                            else <br>
+                            { <br>
+                                &emsp;echo "&lt;div style='color: red'>" . $result['message'] . "&lt;div>"; <br>
+                            } <br>
+                            <br>
+                            // Empty the array in order to fill it with the next row of data <br>
+                            $data = []; <br>
+                        </div>
+                        } <br>
+                        ?> <br>
+                    </div>
+                </div>
+                <div class="w3-section">
+                    <p>
+                        The above script is just to give you an idea. Please take a look at the DOC. It's very clear and easy to use.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-section w3-panel">
+            <h3 class="w3-center"> Congrats. You're done. The end.</h3>
+        </div>
+
+    </div>
+
+
+{% endblock content %}
+
+
+{% block scripts %}
+{% endblock scripts %}

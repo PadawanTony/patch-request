@@ -34,4 +34,9 @@ class GeneralController extends GuestController
     {
         return $this->view('articles/cleardb');
     }
+
+    public function dom_crawler ()
+    {
+        return $this->view('articles/dom_crawler');
+    }
 }
