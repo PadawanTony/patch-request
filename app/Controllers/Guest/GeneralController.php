@@ -4,6 +4,11 @@ namespace App\Controllers\Guest;
 
 class GeneralController extends GuestController
 {
+    public function home ()
+    {
+        return $this->view('home');
+    }
+
     public function blog ()
     {
         return $this->view('blog');

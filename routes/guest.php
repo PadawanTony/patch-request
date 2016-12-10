@@ -10,7 +10,7 @@ use Core\Router;
 | Use 'c' for tiny links. 'c' stands for campaigns
 |
 */
-Router::get('', 'Guest/GeneralController@blog');
+Router::get('', 'Guest/GeneralController@home');
 Router::get('blog', 'Guest/GeneralController@blog');
 Router::get('article', 'Guest/GeneralController@article');
 Router::get('about', 'Guest/GeneralController@about');
