@@ -20,6 +20,9 @@ Router::get('contact', 'Guest/GeneralController@contact');
 Router::get('cleardb', 'Guest/GeneralController@cleardb');
 Router::get('dom-crawler', 'Guest/GeneralController@dom_crawler');
 
+//Testing WYSIWYG
+Router::get('test', 'Guest/GeneralController@test');
+
 /*
 |--------------------------------------------------------------------------
 | Authentication / Registrations

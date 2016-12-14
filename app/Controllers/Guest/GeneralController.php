@@ -39,4 +39,10 @@ class GeneralController extends GuestController
     {
         return $this->view('articles/dom_crawler');
     }
+
+    //Test
+    public function test ()
+    {
+        return $this->view('test');
+    }
 }

@@ -1,0 +1,35 @@
+{% extends 'layout/master.twig' %}
+
+{% block head %}
+    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            selector: "textarea",
+            themes: "modern",
+            inline: false,
+            insert_toolbar: 'quickimage quicktable'
+        });
+    </script>
+{% endblock head %}
+
+{% block title %} {{ parent() }}Home {% endblock title %}
+
+{% block header %}Test{% endblock header %}
+
+
+{% block content %}
+    <div class="w3-container w3-margin w3-padding-32 w3-card-2" style="padding-left: 32px">
+
+        <form action="/post-test" method="post">
+            <textarea class=".tinymce" name="body" id="body" rows="10" style="width: 98%">
+            </textarea>
+            <button type="submit" class="w3-btn-block"> Submit </button>
+        </form>
+
+
+    </div>
+{% endblock content %}
+
+
+{% block scripts %}
+{% endblock scripts %}
