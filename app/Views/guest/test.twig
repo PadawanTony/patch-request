@@ -22,9 +22,13 @@
 
         <form action="/post-test" method="post">
             <textarea class=".tinymce" name="body" id="body" rows="10" style="width: 98%">
+                {{ article.body() }}
             </textarea>
-            <button type="submit" class="w3-btn-block"> Submit </button>
+            <br>
+            <button type="submit" class="w3-btn-block"> Submit</button>
         </form>
+
+        {{ article.body() | raw }}
 
 
     </div>

@@ -8,6 +8,7 @@ namespace App\Socialike\Model;
 
 use App\Http\Paginator;
 use App\Socialike\App\App;
+use App\Socialike\Article;
 use App\Socialike\Campaign\Campaign;
 use App\Socialike\Element\Element;
 use App\Socialike\Ngo\Ngo;
@@ -42,6 +43,7 @@ abstract class Model implements Modeling
         QuestionValue::TABLE => QuestionValue::class,
         Response::TABLE      => Response::class,
         Responder::TABLE     => Responder::class,
+        Article::TABLE       => Article::class,
     ];
 
     /**

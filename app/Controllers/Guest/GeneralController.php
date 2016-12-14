@@ -2,6 +2,11 @@
 namespace App\Controllers\Guest;
 
 
+use App\Socialike\Article;
+use Core\flash\Flash;
+use Core\Request;
+use Core\Response;
+
 class GeneralController extends GuestController
 {
     public function home ()
@@ -43,6 +48,17 @@ class GeneralController extends GuestController
     //Test
     public function test ()
     {
-        return $this->view('test');
+        $article = Article::where(['id'=>4])->first();
+
+        return $this->view('test', ['article'=>$article]);
+    }
+
+    public function postTest ()
+    {
+        $article = Article::create(Request::all());
+
+        Flash::success('Article created.');
+
+        return Response::redirect("/test");
     }
 }

@@ -23,6 +23,8 @@
         <h1 class="w3-wide" style="display: inline;"> {% block header %}{% endblock %} </h1>
     </header>
 
+    {{ include('_partials/flash.twig') }}
+
     {% block content %}{% endblock %}
 
     {{ include('_partials/footer.twig') }}

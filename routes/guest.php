@@ -22,6 +22,7 @@ Router::get('dom-crawler', 'Guest/GeneralController@dom_crawler');
 
 //Testing WYSIWYG
 Router::get('test', 'Guest/GeneralController@test');
+Router::post('post-test', 'Guest/GeneralController@postTest');
 
 /*
 |--------------------------------------------------------------------------

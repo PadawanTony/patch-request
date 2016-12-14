@@ -13,9 +13,9 @@ if (file_exists($path . '/.env')) // On dev environment
     $dotenv->load();
 }
 
-//$dotenv->required([
-//    'APP_ENV',
-//    'DB_NAME',
-//    'DB_USERNAME',
-//    'DB_PASSWORD',
-//])->notEmpty();
+$dotenv->required([
+    'APP_ENV',
+    'DB_NAME',
+    'DB_USERNAME',
+    'DB_PASSWORD',
+])->notEmpty();

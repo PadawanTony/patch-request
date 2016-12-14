@@ -1,0 +1,6 @@
+{% for flash in flash.all %}
+    <div class="alert alert-{{ flash.type }} alert-dismissible fade in" role="alert">
+        {{ flash.message }}
+    </div>
+{% endfor %}
+
