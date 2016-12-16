@@ -6,6 +6,7 @@ use App\Socialike\Article;
 use Core\flash\Flash;
 use Core\Request;
 use Core\Response;
+use Michelf\Markdown;
 
 class GeneralController extends GuestController
 {
@@ -48,9 +49,17 @@ class GeneralController extends GuestController
     //Test
     public function test ()
     {
-        $article = Article::where(['id'=>4])->first();
+        $article = Article::where(['id'=>11])->first();
 
-        return $this->view('test', ['article'=>$article]);
+        $body = Markdown::defaultTransform($article->body());
+
+        return $this->view(
+            'test',
+            [
+                'article'=>$article,
+                'body'=>$body
+            ]
+        );
     }
 
     public function postTest ()

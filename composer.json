@@ -12,7 +12,8 @@
     "php": "^7.0.0",
     "twig/twig": "~1.0",
     "vlucas/phpdotenv": "^2.3",
-    "nesbot/carbon": "^1.21"
+    "nesbot/carbon": "^1.21",
+    "michelf/php-markdown": "^1.7"
   },
   "require-dev": {
     "raveren/kint": "^1.0",

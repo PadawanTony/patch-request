@@ -1,15 +1,7 @@
 {% extends 'layout/master.twig' %}
 
 {% block head %}
-    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-    <script>
-        tinymce.init({
-            selector: "textarea",
-            themes: "modern",
-            inline: false,
-            insert_toolbar: 'quickimage quicktable'
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 {% endblock head %}
 
 {% block title %} {{ parent() }}Home {% endblock title %}
@@ -21,14 +13,12 @@
     <div class="w3-container w3-margin w3-padding-32 w3-card-2" style="padding-left: 32px">
 
         <form action="/post-test" method="post">
-            <textarea class=".tinymce" name="body" id="body" rows="10" style="width: 98%">
-                {{ article.body() }}
-            </textarea>
+            <textarea class=".tinymce" name="body" id="body" rows="10" style="width: 98%">{{ article.body() }}</textarea>
             <br>
             <button type="submit" class="w3-btn-block"> Submit</button>
         </form>
 
-        {{ article.body() | raw }}
+        {{ body | raw }}
 
 
     </div>
@@ -36,4 +26,7 @@
 
 
 {% block scripts %}
+    <script>
+        var simplemde = new SimpleMDE();
+    </script>
 {% endblock scripts %}
