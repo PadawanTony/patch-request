@@ -1,0 +1,139 @@
+{% extends 'layout/master.twig' %}
+
+{% block title %} {{ parent() }}Blog - Update PATH environment variable{% endblock title %}
+
+{% block head %}
+    <script src="/js/w3codecolor.js" type="application/javascript"></script>
+{% endblock %}
+
+{% block header %} Update the PATH Environment Variable. {% endblock header %}
+
+
+{% block content %}
+
+    <div class="w3-container w3-card w3-margin w3-padding ">
+
+        {#Secondary Title#}
+        <div class="w3-section w3-padding w3-dark-gray w3-round-small">
+            <h3 class="w3-center w3-text-shadow"><b>This tutorial explains how to add directories to your existing PATH environment variable in Ubuntu.</b>
+                {#<small class="w3-hide-small w3-opacity-min w3-right">Dec 10, 2016</small>#}
+            </h3>
+        </div>
+
+        {#Foreplay#}
+        <div class="w3-section w3-padding w3-card-2" style="background-color: #F4E8F4">
+            <div class="w3-panel w3-round">
+                <h2>Why do you care?</h2>
+                    Many times you will need to add a directory to the PATH environment variable in order to be able to access a cmd easily.
+                    <br>
+                    For example, recently I needed to add the laravel cmd in my system so that I could run:
+                <div class="w3-code notranslate">
+                    <b>antony:~ $</b> <code>laravel new project</code>
+                </div>
+                    instead of having to type the full path to the cmd like this:
+                <div class="w3-code notranslate">
+                    <b>antony:~ $</b> <code>/home/antony/.composer/vendor/bin/laravel new project</code>
+                </div>
+                    The way to achieve this is to add the aforementioned path to the PATH environment variable.
+            </div>
+        </div>
+
+        {#Step 1#}
+        <div class="w3-section w3-padding w3-card-2" style="background-color: #D6C2D6;">
+            <div class="w3-panel w3-round">
+                <h2>Edit the .profile File</h2>
+                <div class="w3-example w3-round">
+                    <h3>Open a terminal and open the file with the editor of your choice.</h3>
+                    <p>For example you could type: <code class="w3-codespan">gedit ~/.profile</code></p>
+                    <p>Then edit the contents of the file to look like the following.</p>
+                    <p>Pay attention to the last line of code that we added.</p>
+                    <div class="w3-code notranslate">
+                        # if running bash <br>
+                        if [ -n "$BASH_VERSION" ]; then <br>
+                        &emsp;# include .bashrc if it exists <br>
+                        &emsp;if [ -f "$HOME/.bashrc" ]; then <br>
+                        &emsp;&emsp;. "$HOME/.bashrc" <br>
+                        &emsp;fi <br>
+                        fi <br>
+                        <br>
+                        # set PATH so it includes user's private bin if it exists <br>
+                        if [ -d "$HOME/bin" ] ; then <br>
+                        &emsp;PATH="$HOME/bin:$PATH" <br>
+                        fi <br>
+                        <br>
+                        ### Add directories to the path <br>
+                        PATH="$PATH:/usr/local/heroku/bin:$HOME/.composer/vendor/bin" <br>
+                    </div>
+                    <p>As you can see, in the last line, we are adding any directory we want to include in the $PATH.</p>
+                </div>
+                <div class="w3-section">
+                    <p>
+                        You are almost done! Just go through the following informational and troubleshooting notes.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        {#Step 2#}
+        <div class="w3-section w3-padding w3-card-2" style="background-color: #968896;">
+            <div class="w3-panel w3-round">
+                <h2>Important Note #1 - Why use <code class="w3-codespan">.profile</code>? </h2>
+                <div class="w3-example">
+                    <p>
+                        <strong>Per the <a href="https://help.ubuntu.com/community/EnvironmentVariables#A.2BAH4-.2F.profile">Ubuntu DOC:</a></strong>
+                    </p>
+                    <div class="w3-row">
+                        <div class="w3-col s12 m8">
+                            <div class="w3-panel w3-sand w3-leftbar">
+                                <span class="w3-text-dark-gray" style="font-size:150px;line-height:0.6em;opacity:0.5">&#10077;</span>
+                                <p class="w3-xlarge" style="margin-top:-40px">
+                                    <i>In the absence of ~/.bash_profile and ~/.bash_login, ~/.profile is read. It can hold the same configurations, which are then also accessible by other shells. Mind that other shells might not understand the Bash syntax.
+                                    </i>
+                                </p>
+                                <p>Ubuntu DOC</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p>
+                        What this means is that .profile will execute only if .bash_profile and .bash_login DO NOT exist. If they exist, either delete them or transfer the contents of the .profile to the .bash_profile.
+                    </p>
+                    <p>
+                        The reason that we prefer to use .profile over .bash_profile is that the first one will work with all shells but the later one will only work with bash shells.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        {#Step 3#}
+        <div class="w3-section w3-padding w3-card-2" style="background-color: #564E56;">
+            <div class="w3-panel w3-round">
+                <h2>Important Note #2 - Make Changes Take Effect </h2>
+                <div class="w3-example">
+                    <div class="">
+                        <p>
+                            After you make a change to the file you chosen (let's say .profile), remember to run
+                            <br>
+                            <code class="w3-codespan">source ~/.profile</code> so that the changes take effect.
+                        </p>
+                        <p>
+                            Since .profile is what we call a login shell, sometimes its changes only take effect after you log-out and log-in again (but <code>source ~/.profile</code> should generally work).
+
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-section w3-panel">
+            <h3 class="w3-center"> That's it! You're done. Good job making it to the end :) </h3>
+        </div>
+
+    </div>
+
+
+{% endblock content %}
+
+
+{% block scripts %}
+{% endblock scripts %}

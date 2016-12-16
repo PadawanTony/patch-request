@@ -39,4 +39,9 @@ class GeneralController extends GuestController
     {
         return $this->view('articles/dom_crawler');
     }
+
+    public function update_path ()
+    {
+        return $this->view('articles/update_path');
+    }
 }
